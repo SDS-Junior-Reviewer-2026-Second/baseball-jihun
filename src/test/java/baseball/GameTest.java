@@ -19,19 +19,18 @@ public class GameTest {
 	}
 
 	@Test
-	public void 입력값이_없을_경우() {
+	public void 입력값이_허용되지_않는_경우() {
+		AssertIllegalArgument(null);
+		AssertIllegalArgument("12");
+		AssertIllegalArgument("1234");
+	}
+
+	private void AssertIllegalArgument(String guessNumber) {
 		assertThrows(IllegalArgumentException.class, ()->{
-			game.guess(null);
+			game.guess(guessNumber);
 		});
 	}
-	
-	@Test
-	public void 입력값_자리수가_세자리가_아닐_경우() {
-		assertThrows(IllegalArgumentException.class, ()->{
-			game.guess("12");
-		});
-	}
-	
+
 	@Test
 	public void 입력값에_숫자_외의_뮸자가_입력될_경우() {
 
