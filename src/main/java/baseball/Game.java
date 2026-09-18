@@ -10,12 +10,15 @@ public class Game {
             return new GuessResult(true, 3, 0);
         } else {
             int strikes = 0;
+            int balls = 0;
             for(int i=0;i<question.length();i++){
                 if(question.indexOf(guessNumber.charAt(i)) == i){
                     strikes++;
+                } else if(question.indexOf(guessNumber.charAt(i)) > -1){
+                    balls++;
                 }
             }
-            return new GuessResult(false, strikes, 0);
+            return new GuessResult(false, strikes, balls);
         }
     }
 
