@@ -1,20 +1,26 @@
 package baseball;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
 
+	private Game game;
+
+	@BeforeEach
+	void setUp() {
+		game = new Game();
+	}
+
 	@Test
 	public void 게임이_시작가능(){
-		Game game = new Game();
 		assertNotNull(game);
 	}
 
 	@Test
 	public void 입력값이_없을_경우() {
 		assertThrows(IllegalArgumentException.class, ()->{
-			Game game = new Game();
 			game.guess(null);
 		});
 	}
