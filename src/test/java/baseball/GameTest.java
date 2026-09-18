@@ -24,22 +24,13 @@ public class GameTest {
 		AssertIllegalArgument("12");
 		AssertIllegalArgument("1234");
 		AssertIllegalArgument("12s");
+		AssertIllegalArgument("111");
 	}
 
 	private void AssertIllegalArgument(String guessNumber) {
 		assertThrows(IllegalArgumentException.class, ()->{
 			game.guess(guessNumber);
 		});
-	}
-
-	@Test
-	public void 입력값에_숫자_외의_뮸자가_입력될_경우() {
-
-	}
-	
-	@Test
-	public void 입력값에_중복된_숫자가_입력될_경우() {
-
 	}
 	
 	@Test
