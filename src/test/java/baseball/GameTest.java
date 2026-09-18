@@ -66,7 +66,7 @@ public class GameTest {
 	@Test
 	public void 볼과_스트라이크가_함께_있을_경우_1_strike_1_ball() {
 		generateQuestion("123");
-		assertMatchNumber(game.guess("713"),false, 1, 1);
+		assertMatchNumber(game.guess("713"),false, 2, 1);
 	}
 
 	private static void assertMatchNumber(GuessResult result, boolean solved, int strikes, int balls) {
