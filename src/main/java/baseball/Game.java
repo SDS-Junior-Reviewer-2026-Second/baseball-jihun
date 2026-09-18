@@ -6,20 +6,32 @@ public class Game {
 
     public GuessResult guess(String guessNumber) {
         assertIllegalArgument(guessNumber);
-        if(guessNumber.equals(question)){
-            return new GuessResult(true, 3, 0);
+        if(isSolved(guessNumber)){
+            return getGuessResult(true, 3,0);
         } else {
-            int strikes = 0;
-            int balls = 0;
-            for(int i=0;i<question.length();i++){
-                if(question.indexOf(guessNumber.charAt(i)) == i){
-                    strikes++;
-                } else if(question.indexOf(guessNumber.charAt(i)) > -1){
-                    balls++;
-                }
-            }
-            return new GuessResult(false, strikes, balls);
+            return createUnresolvedResult(guessNumber);
         }
+    }
+
+    private GuessResult createUnresolvedResult(String guessNumber) {
+        int strikes = 0;
+        int balls = 0;
+        for(int i=0;i<question.length();i++){
+            if(question.indexOf(guessNumber.charAt(i)) == i){
+                strikes++;
+            } else if(question.indexOf(guessNumber.charAt(i)) > -1){
+                balls++;
+            }
+        }
+        return getGuessResult(false, strikes, balls);
+    }
+
+    private static GuessResult getGuessResult(boolean success, int strikes, int balls) {
+        return new GuessResult(success, strikes, balls);
+    }
+
+    private boolean isSolved(String guessNumber) {
+        return guessNumber.equals(question);
     }
 
     private static void assertIllegalArgument(String guessNumber) {
