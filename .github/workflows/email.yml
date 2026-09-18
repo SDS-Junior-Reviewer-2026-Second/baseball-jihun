@@ -42,4 +42,10 @@ jobs:
           --destination "ToAddresses=sejin.choi@mincoding.co.kr" \
           --message "Subject={Data=테스트 메일 전송},Body={Text={Data=안녕? KFC from GitHub Actions}}"
 
+      - run: mkdir staging && cp target/*.jar staging
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: Package
+          path: staging
           
